@@ -1,0 +1,23 @@
+---
+- name: Install libmemcached-dev
+  apt: name=libmemcached-dev state=present update_cache=yes cache_valid_time=3600
+  become: yes
+
+- name: Download source code
+  get_url: url=http://pecl.php.net/get/memcached-{{ ext_memcached_version }}.tgz dest=/tmp/memcached-{{ ext_memcached_version }}.tgz
+
+- name: Extract archive
+  command: chdir=/tmp/ tar xfz memcached-{{ ext_memcached_version }}.tgz creates=/tmp/memcached-{{ ext_memcached_version }}
+
+- name: Phpize
+  shell: chdir=/tmp/memcached-{{ ext_memcached_version }} phpize > /dev/null
+
+- name: Configure
+  shell: chdir=/tmp/memcached-{{ ext_memcached_version }} ./configure --enable-memcached-igbinary --disable-memcached-sasl > /dev/null
+
+- name: Make
+  shell: chdir=/tmp/memcached-{{ ext_memcached_version }} make > /dev/null
+
+- name: Install
+  shell: chdir=/tmp/memcached-{{ ext_memcached_version }} make install > /dev/null
+  become: yes

@@ -1,0 +1,19 @@
+---
+- name: Download source code
+  get_url: url=http://pecl.php.net/get/redis-{{ ext_redis_version }}.tgz dest=/tmp/redis-{{ ext_redis_version }}.tgz
+
+- name: Extract archive
+  command: chdir=/tmp/ tar xfz redis-{{ ext_redis_version }}.tgz creates=/tmp/redis-{{ ext_redis_version }}
+
+- name: Phpize
+  shell: phpize > /dev/null chdir=/tmp/redis-{{ ext_redis_version }}
+
+- name: Configure
+  shell: ./configure --enable-redis-igbinary > /dev/null chdir=/tmp/redis-{{ ext_redis_version }}
+
+- name: Make
+  shell: make > /dev/null chdir=/tmp/redis-{{ ext_redis_version }}
+
+- name: Install
+  shell: make install > /dev/null chdir=/tmp/redis-{{ ext_redis_version }}
+  become: yes

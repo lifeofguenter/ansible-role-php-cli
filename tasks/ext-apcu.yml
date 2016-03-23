@@ -1,0 +1,19 @@
+---
+- name: Download source code
+  get_url: url=http://pecl.php.net/get/apcu-{{ ext_apcu_version }}.tgz dest=/tmp/apcu-{{ ext_apcu_version }}.tgz
+
+- name: Extract archive
+  command: chdir=/tmp/ tar xfz apcu-{{ ext_apcu_version }}.tgz creates=/tmp/apcu-{{ ext_apcu_version }}
+
+- name: Phpize
+  shell: phpize > /dev/null chdir=/tmp/apcu-{{ ext_apcu_version }}
+
+- name: Configure
+  shell: ./configure > /dev/null chdir=/tmp/apcu-{{ ext_apcu_version }}
+
+- name: Make
+  shell: make > /dev/null chdir=/tmp/apcu-{{ ext_apcu_version }}
+
+- name: Install
+  shell: make install > /dev/null chdir=/tmp/apcu-{{ ext_apcu_version }}
+  become: yes

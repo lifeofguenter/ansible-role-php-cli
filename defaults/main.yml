@@ -1,0 +1,12 @@
+---
+php_version: 5.6.19
+
+ext_igbinary_version: 1.2.1
+
+ext_apcu_version: 4.0.10
+
+ext_memcached_version: 2.2.0
+
+ext_imagick_version: 3.4.0
+
+ext_redis_version: 2.2.7
