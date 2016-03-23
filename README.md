@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lifeofguenter/ansible-role-php-cli.svg?branch=master)](https://travis-ci.org/lifeofguenter/ansible-role-php-cli)
+
 php-cli
 =========
 
