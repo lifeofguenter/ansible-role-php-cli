@@ -35,11 +35,6 @@
   file: path=/etc/php5/cli/conf.d state=directory mode=0755 recurse=yes
   become: yes
 
-- name: Create log folder
-  file: state=directory mode=0755 recurse=yes path={{ php5cli_error_log | dirname }}
-  when: php5cli_error_log is defined
-  become: yes
-
 - name: Create php.ini
   template: src=php.ini.j2 dest=/etc/php5/cli/php.ini mode=0644
   become: yes
