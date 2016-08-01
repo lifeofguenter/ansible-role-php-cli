@@ -3,26 +3,26 @@
 - name: Install dependencies
   apt: name={{ item }} state=present update_cache=yes cache_valid_time=3600
   with_items:
-    - make
-    - gcc
-    - g++
-    - libicu-dev
-    - libssl-dev
-    - libxml2-dev
-    - libcurl4-openssl-dev
-    - libjpeg-dev
-    - libvpx-dev
-    - libpng12-dev
-    - libfreetype6-dev
-    - libc-client2007e-dev
-    - libkrb5-dev
-    - libmcrypt-dev
-    - libxslt1-dev
-    - libbz2-dev
-    - automake
-    - autoconf
-    - pkg-config
+    - libssl1.0.0
+    - libicu52
+    - libxml2
+    - libbz2-1.0
+    - libcurl3
+    - libpng12-0
+    - libfreetype6
+    - libmcrypt4
+    - libxslt1.1
+    - libedit2
+    - libreadline6
   become: yes
+
+- name: Include Debian specifics
+  include: packages-debian.yml
+  when: ansible_distribution == 'Debian'
+
+- name: Include Ubuntu specifics
+  include: packages-ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Fetch .deb
   get_url: url=https://ftp.weheartwebsites.de/debian/jessie/php5-cli_{{ php_version }}_amd64.deb dest=/tmp/php5-cli_{{ php_version }}_amd64.deb
