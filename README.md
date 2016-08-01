@@ -25,7 +25,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: lifeofguenter.php-cli }
+         - { role: lifeofguenter.php5-cli }
 
 License
 -------
