@@ -1,13 +1,13 @@
 ---
 
-php_version: 5.6.24-23
+php5cli_version: 5.6.24-23
 
-php_ext_apcu_version: 4.0.11-23
+php5cli_ext_apcu_version: 4.0.11-23
 
-php_ext_imagick_version: 3.4.3RC1-23
+php5cli_ext_imagick_version: 3.4.3RC1-23
 
-php_ext_igbinary_version: 1.2.1-23
+php5cli_ext_igbinary_version: 1.2.1-23
 
-php_ext_memcached_version: 2.2.0-23
+php5cli_ext_memcached_version: 2.2.0-23
 
-php_ext_redis_version: 2.2.8-23
+php5cli_ext_redis_version: 2.2.8-23
