@@ -12,9 +12,9 @@ track_errors = Off
 html_errors = Off
 
 error_reporting = E_ALL
-{% if phpcli_error_log is defined %}
+{% if php5cli_error_log is defined %}
 log_errors = On
-error_log = "{{ phpcli_error_log }}"
+error_log = "{{ php5cli_error_log }}"
 {% else %}
 log_errors = Off
 {% endif %}
