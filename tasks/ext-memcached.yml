@@ -1,23 +1,18 @@
 ---
-- name: Install libmemcached-dev
-  apt: name=libmemcached-dev state=present update_cache=yes cache_valid_time=3600
+
+- name: Install libmemcached
+  apt: name=libmemcached11 state=present update_cache=yes cache_valid_time=3600
   become: yes
+  when: ansible_distribution == 'Debian'
 
-- name: Download source code
-  get_url: url=http://pecl.php.net/get/memcached-{{ ext_memcached_version }}.tgz dest=/tmp/memcached-{{ ext_memcached_version }}.tgz
+- name: Install libmemcached
+  apt: name=libmemcached10 state=present update_cache=yes cache_valid_time=3600
+  become: yes
+  when: ansible_distribution == 'Ubuntu'
 
-- name: Extract archive
-  command: chdir=/tmp/ tar xfz memcached-{{ ext_memcached_version }}.tgz creates=/tmp/memcached-{{ ext_memcached_version }}
+- name: Fetch memcached .deb
+  get_url: url=https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php5-memcached_{{ php_ext_memcached_version }}_amd64.deb dest=/tmp/php5-memcached_{{ php_ext_memcached_version }}_amd64.deb
 
-- name: Phpize
-  shell: chdir=/tmp/memcached-{{ ext_memcached_version }} phpize > /dev/null
-
-- name: Configure
-  shell: chdir=/tmp/memcached-{{ ext_memcached_version }} ./configure --enable-memcached-igbinary --disable-memcached-sasl > /dev/null
-
-- name: Make
-  shell: chdir=/tmp/memcached-{{ ext_memcached_version }} make > /dev/null
-
-- name: Install
-  shell: chdir=/tmp/memcached-{{ ext_memcached_version }} make install > /dev/null
+- name: Install memcached .deb
+  apt: deb=/tmp/php5-memcached_{{ php_ext_memcached_version }}_amd64.deb
   become: yes

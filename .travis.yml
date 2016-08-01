@@ -1,6 +1,10 @@
 ---
+
 language: python
+cache: pip
 python: "2.7"
+sudo: required
+dist: trusty
 
 # Use the new container infrastructure
 sudo: false
@@ -22,8 +26,10 @@ install:
   - printf '[defaults]\nroles_path=../' >ansible.cfg
 
 script:
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  - "ansible-playbook tests/test.yml -i tests/inventory --connection=local"
+  - "ansible-playbook tests/test.yml -i tests/inventory --connection=local"
+  - php --version
+  - php -m
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
