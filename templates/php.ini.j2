@@ -53,12 +53,12 @@ mysqlnd.collect_memory_statistics = Off
 session.gc_maxlifetime = 86400
 
 ; EXTENSION SECTION
-extension=apcu.so
-extension=imagick.so
-extension=igbinary.so
-extension=memcached.so
-extension=redis.so
+extension = igbinary.so
+extension = apcu.so
+extension = imagick.so
+extension = memcached.so
+extension = redis.so
 
-apc.serializer=igbinary
-apc.shm_size=512M
-memcached.serializer=igbinary
+apc.serializer = igbinary
+apc.shm_size = {{ php5cli_conf_apc_shm_size }}
+memcached.serializer = igbinary
