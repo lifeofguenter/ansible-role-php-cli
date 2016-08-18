@@ -32,15 +32,3 @@
 - name: Install .deb
   apt: deb=/tmp/php5-cli_{{ php5cli_version }}_amd64.deb
   become: yes
-
-- name: Create /etc/php5/cli/conf.d
-  file: path=/etc/php5/cli/conf.d state=directory mode=0755 recurse=yes
-  become: yes
-
-- name: Create php.ini
-  template: src=php.ini.j2 dest=/etc/php5/cli/php.ini mode=0644
-  become: yes
-
-- name: Apt hold
-  shell: echo "php5-cli hold" | dpkg --set-selections
-  become: yes

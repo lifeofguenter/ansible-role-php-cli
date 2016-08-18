@@ -11,6 +11,8 @@
   include: php-cli.yml
   when: php5cli_current.rc != 0 or php5cli_current.stdout.find("PHP {{ php5cli_real_version }} (cli)") == -1
 
+- include: config.yml
+
 - include: ext-apcu.yml
 
 - include: ext-imagick.yml
