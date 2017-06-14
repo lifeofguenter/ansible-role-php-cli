@@ -5,7 +5,7 @@
   become: yes
 
 - name: Create php.ini
-  template: src=php.ini.j2 dest=/etc/php5/cli/php.ini mode=0644
+  template: src=php.ini dest=/etc/php5/cli/php.ini mode=0644
   become: yes
 
 - name: Apt hold

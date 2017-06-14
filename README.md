@@ -3,7 +3,7 @@
 php-cli
 =========
 
-This role will compile PHP5 from source.
+This role will compile PHP5 from source. _DEPRECATED_
 
 Requirements
 ------------
