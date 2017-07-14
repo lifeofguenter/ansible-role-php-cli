@@ -16,6 +16,8 @@
     - libxslt1.1
     - libedit2
     - libreadline6
+    - libc-client2007e
+    - krb5-multidev
   become: yes
 
 - name: Include Debian specifics
