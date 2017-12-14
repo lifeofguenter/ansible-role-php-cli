@@ -1,24 +1,24 @@
 ---
 
+- name: install dependencies
+  include_tasks: packages-{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}.yml
+
 - name: Get php version
-  command: php --version
+  command: /usr/bin/php --version
   register: php5cli_current
   ignore_errors: yes
 
-- set_fact: php5cli_real_version="{{ php5cli_version | regex_replace('-\\d+$', '') }}"
+- import_tasks: php-cli.yml
+  when: php5cli_current | failed or not php5cli_current.stdout | search(php5cli_version_string_match)
 
-- name: Install php-cli
-  include: php-cli.yml
-  when: php5cli_current.rc != 0 or php5cli_current.stdout.find("PHP {{ php5cli_real_version }} (cli)") == -1
+- import_tasks: config.yml
 
-- include: config.yml
+- import_tasks: ext-apcu.yml
 
-- include: ext-apcu.yml
+- import_tasks: ext-imagick.yml
 
-- include: ext-imagick.yml
+- import_tasks: ext-igbinary.yml
 
-- include: ext-igbinary.yml
+- import_tasks: ext-memcached.yml
 
-- include: ext-memcached.yml
-
-- include: ext-redis.yml
+- import_tasks: ext-redis.yml

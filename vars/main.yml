@@ -1,0 +1,6 @@
+---
+
+# remove build from version var
+php5cli_real_version: "{{ php5cli_version | regex_replace('-\\d+$', '') }}"
+
+php5cli_version_string_match: "PHP {{ php5cli_real_version }} \\(cli\\)"
