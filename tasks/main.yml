@@ -15,7 +15,7 @@
     var: php5cli_current
 
 - import_tasks: php-cli.yml
-  when: php5cli_current | failed or php5cli_current.stdout | search(php5cli_version_string_match)
+  when: php5cli_current | failed or not php5cli_current.stdout | search(php5cli_version_string_match)
 
 - import_tasks: config.yml
 
