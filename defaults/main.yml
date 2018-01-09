@@ -2,14 +2,14 @@
 
 php5cli_conf_apc_shm_size: 256M
 
-php5cli_version: 5.6.32-33
+php5cli_version: 5.6.33-34
 
-php5cli_ext_apcu_version: 4.0.11-33
+php5cli_ext_apcu_version: 4.0.11-34
 
-php5cli_ext_imagick_version: 3.4.3-33
+php5cli_ext_imagick_version: 3.4.3-34
 
-php5cli_ext_igbinary_version: 2.0.5-33
+php5cli_ext_igbinary_version: 2.0.5-34
 
-php5cli_ext_memcached_version: 2.2.0-33
+php5cli_ext_memcached_version: 2.2.0-34
 
-php5cli_ext_redis_version: 3.1.4-33
+php5cli_ext_redis_version: 3.1.6-34
